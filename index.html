@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cute Dog Names</title>
+  <!-- import bootstrap CSS for styling -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Name the page -->
+    <h1>Cute Dog Names</h1>
+    <!-- Bootstrap table -->
+    <table class="table" id="dogTable">
+      <thead>
+        <tr>
+          <th>Row</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <tr>
+          <td>1</td>
+          <td>Fluffy</td>
+        </tr>
+      </tbody>
+    </table>
+    <form id="dogForm">
+      <div class="form-group">
+        <label for="dogName">Add a Cute Dog Name:</label>
+        <input type="text" class="form-control" id="dogName" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Add to Table</button>
+    </form>
+  </div>
+<!-- Javascript to make page function -->
+  <script>
+    let rowCount = 1;  // Initialize row count to 1
+
+    // Add event listener to form
+    document.getElementById("dogForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      // Increment row count
+      rowCount++;
+
+      // Get the user input from the text box
+      const dogName = document.getElementById("dogName").value;
+
+      // Access table body
+      const tableBody = document.getElementById("tableBody");
+
+      // Create a new table row and cells
+      const newRow = document.createElement("tr");
+      const cell1 = document.createElement("td");
+      const cell2 = document.createElement("td");
+
+      // Add data to the cells
+      cell1.innerHTML = rowCount;
+      cell2.innerHTML = dogName;
+
+      // Append cells to the row
+      newRow.appendChild(cell1);
+      newRow.appendChild(cell2);
+
+      // Append the new row to the table body
+      tableBody.appendChild(newRow);
+
+      // Reset the input field for new entry
+      document.getElementById("dogName").value = "";
+    });
+  </script>
+</body>
+</html>
